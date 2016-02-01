@@ -21,21 +21,32 @@ module OpenStreetFind
     result = JSON.parse(Net::HTTP.get(uri))
     is_a_station = false
     result.each do |obj|
-      if obj['class'].include?("railsway") || obj['type'].include?("station")
+      if obj['class'].include?("railsway") || obj['class'].include?("aeroway") || obj['type'].include?("station") || || obj['type'].include?("aerodrome")
         is_a_station = true
       end
     end
     return is_a_station
   end
 
-  def self.structural_find(street, postalcode, city, country)
+  def self.geocode(query)
+    query = URI::encode(query)
+    uri = URI.parse("http://nominatim.openstreetmap.org/search/?q=#{query}&format=json&addressdetails=1&limit=1")
+    result = JSON.parse(Net::HTTP.get(uri))
+    geocode = {
+      lat: result[0]['lat']
+      lon: result[0]['lon']
+    }
+    return geocode
+  end
+
+  def self.find_by_structural(street, postalcode, city, country)
     p "Open Street Find strctural looking for : street=\"#{street}\" | postalcode=\"#{postalcode}\" | city=\"#{city}\" | country=\"#{country}\""
     uri = URI.parse("http://nominatim.openstreetmap.org/search/?street=#{street}&postalcode=#{postalcode}&city=#{city}&country=#{country}&format=json&addressdetails=1")
     result = JSON.parse(Net::HTTP.get(uri))
     return result
   end
 
-  def self.geocode_find(lon, lat)
+  def self.find_by_geocode(lon, lat)
     uri = URI.parse("http://nominatim.openstreetmap.org/reverse?lon=#{lon}&lat=#{lat}&zoom=18&addressdetails=1&format=json")
     result = Net::HTTP.get(uri)
     return result
