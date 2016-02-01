@@ -1,15 +1,31 @@
 require "open_street_find/version"
 require 'net/http'
+require 'open-uri'
+
 module OpenStreetFind
   # Your code goes here...
   def self.find(query)
-    q = query.split(" ")
-    query = q.join("+")
+
+    query = URI::encode(query)
     p "Open Street Find looking for :" + query
     uri = URI.parse("http://nominatim.openstreetmap.org/search/?q=#{query}&format=json&addressdetails=1")
     result = JSON.parse(Net::HTTP.get(uri))
     p "Open Street Find result from nominatim API :" + result.to_s
     return result
+  end
+
+  def self.is_a_station?(query)
+    query = URI::encode(query)
+    p "Open Street Find looking for :" + query
+    uri = URI.parse("http://nominatim.openstreetmap.org/search/?q=#{query}&format=json&addressdetails=1")
+    result = JSON.parse(Net::HTTP.get(uri))
+    is_a_station = false
+    result.each do |obj|
+      if obj['class'].inculde?("railsway") || obj['type'].inculde?("station")
+        is_a_station = true
+      end
+    end
+    return is_a_station
   end
 
   def self.structural_find(street, postalcode, city, country)
