@@ -1,6 +1,6 @@
 # OpenStreetFind
 
-This Gem use nominatim (https://nominatim.openstreetmap.org/) from OpenStreetMap by default to find places and there details.
+This Gem use nominatim (https://nominatim.openstreetmap.org/) from OpenStreetMap by default to find places and their details.
 (geocodes, adresses, types etc...). It does not deal with quality of the result, it juste give it to you if one or more places are found.
 
 ## Installation
