@@ -35,9 +35,9 @@ Call a query method on your finder:
 result = finder.find(query)
 ```
 
-query must be a string that would find result on https://nominatim.openstreetmap.org/
+The "query" argument must be a string that would find result on https://nominatim.openstreetmap.org/
 The gem do not deal with the presence of a valid result, you'll have to make sure that your
-query is a valuable query on nominatim website. It will be parsed as a URI to generate your API call.
+query is a valuable one on nominatim website. It will be parsed as an URI to generate your API call.
 
 The result of queries are formated in an array of JSON.
 
