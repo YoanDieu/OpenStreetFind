@@ -5,7 +5,10 @@ module OpenStreetFind
   def self.find(query)
     q = query.split(" ")
     query = q.join("+")
+    p "Open Street Find looking for :" + query
     uri = URI.parse("http://nominatim.openstreetmap.org/search/?q=#{query}&format=json")
-    return Net::HTTP.get(uri)
+    result = Net::HTTP.get(uri)
+    p "Open Street Find result from nominatim API :" + result.to_s
+    return result
   end
 end
