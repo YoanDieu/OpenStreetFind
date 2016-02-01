@@ -1,15 +1,14 @@
 # OpenStreetFind
 
-This Gem is curently in Development
-
-TODO: test uri request
+This Gem use nominatim (https://nominatim.openstreetmap.org/) from OpenStreetMap by default to find places and there details.
+(geocodes, adresses, types etc...). It does not deal with quality of the result, it juste give it to you if one or more places are found.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'open_street_find'
+gem 'open_street_find', '~> 0.1.23' , github: "YoanDieu/OpenStreetFind"
 ```
 
 And then execute:
@@ -22,7 +21,27 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Set the finder:
+
+    finder = OpenStreetFind
+
+Call a query method on your finder:
+
+    result = finder.find(query)
+
+query must be a string that would find result on https://nominatim.openstreetmap.org/
+The gem do not deal with the presence of a valid result, you'll have to make sure that your
+query is a valuable query on nominatim website, witch mean a valuable URI with working parameters.
+
+The result of querys are formated in an array of JSON.
+
+## Other APIs/End point
+
+You can configure an other Endpoint, for instance if you wish to use http://www.mapquest.com/ instead of OpenStreetMap nominatim service, simply configure an environnement variable like so:
+
+    ENV["NOMINATIM_ENDPOINT"] = "http://open.mapquestapi.com/nominatim/v1"
+
+The gem curently does not allow you to set an API Key, so it's only to be used on free request.
 
 ## Development
 
