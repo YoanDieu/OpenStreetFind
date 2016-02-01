@@ -4,7 +4,7 @@ require 'open-uri'
 
 module OpenStreetFind
   # Your code goes here...
-  def uri(query)
+  def self.uri(query)
      query = URI::encode(query)
      endpoint = ENV["NOMINATIM_ENDPOINT"] || "http://nominatim.openstreetmap.org/"
      URI.parse("#{endpoint}/search/?q=#{query}&format=json&addressdetails=1")
