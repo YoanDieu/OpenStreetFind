@@ -11,4 +11,11 @@ module OpenStreetFind
     p "Open Street Find result from nominatim API :" + result.to_s
     return result
   end
+
+  def self.structural_find(street, postalcode, city, country)
+    p "Open Street Find strctural looking for : street=\"#{street}\" | postalcode=\"#{postalcode}\" | city=\"#{city}\" | country=\"#{country}\""
+    uri = URI.parse("http://nominatim.openstreetmap.org/search/?street=#{street}&postalcode=#{{postalcode}}&city=#{city}&country=#{country}&format=json&addressdetails=1")
+    result = JSON.parse(Net::HTTP.get(uri))
+    return result
+  end
 end
