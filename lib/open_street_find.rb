@@ -20,7 +20,7 @@ module OpenStreetFind
   end
 
   def self.geocode_find(lon, lat)
-    uri = URI.parse("http://nominatim.openstreetmap.org/revers?lon=#{lon}&lat=#{lat}&zoom=10&addressdetails=1&format=json")
+    uri = URI.parse("http://nominatim.openstreetmap.org/reverse?lon=#{lon}&lat=#{lat}&zoom=10&addressdetails=1&format=json")
     result = Net::HTTP.get(uri)
     return result
   end
