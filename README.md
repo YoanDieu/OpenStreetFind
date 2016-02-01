@@ -23,17 +23,17 @@ Or install it yourself as:
 
 Set the finder:
 
-    '''ruby
+```ruby
 
-    finder = OpenStreetFind
-    '''
+finder = OpenStreetFind
+```
 
 Call a query method on your finder:
 
-    '''
+```ruby
 
-    result = finder.find(query)
-    '''
+result = finder.find(query)
+```
 
 query must be a string that would find result on https://nominatim.openstreetmap.org/
 The gem do not deal with the presence of a valid result, you'll have to make sure that your
@@ -45,10 +45,10 @@ The result of queries are formated in an array of JSON.
 
 You can configure an other Endpoint, for instance if you wish to use http://www.mapquest.com/ instead of OpenStreetMap nominatim service, simply configure an environnement variable like so:
 
-    '''
+```ruby
 
-    ENV["NOMINATIM_ENDPOINT"] = "http://open.mapquestapi.com/nominatim/v1"
-    '''
+ENV["NOMINATIM_ENDPOINT"] = "http://open.mapquestapi.com/nominatim/v1"
+```
 
 The gem currently does not allow you to set an API Key, so it's only to be used on free request.
 
