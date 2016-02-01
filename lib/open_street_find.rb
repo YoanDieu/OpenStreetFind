@@ -21,7 +21,7 @@ module OpenStreetFind
     result = JSON.parse(Net::HTTP.get(uri))
     is_a_station = false
     result.each do |obj|
-      if obj['class'].inculde?("railsway") || obj['type'].include?("station")
+      if obj['class'].include?("railsway") || obj['type'].include?("station")
         is_a_station = true
       end
     end
