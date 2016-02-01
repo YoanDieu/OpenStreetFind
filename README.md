@@ -23,7 +23,7 @@ Or install it yourself as:
 
 Set the finder:
 
-    '''
+    '''ruby
 
     finder = OpenStreetFind
     '''
@@ -49,7 +49,7 @@ You can configure an other Endpoint, for instance if you wish to use http://www.
 
     ENV["NOMINATIM_ENDPOINT"] = "http://open.mapquestapi.com/nominatim/v1"
     '''
-    
+
 The gem currently does not allow you to set an API Key, so it's only to be used on free request.
 
 ## Development
