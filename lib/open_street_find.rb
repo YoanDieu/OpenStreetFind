@@ -7,7 +7,7 @@ module OpenStreetFind
     query = q.join("+")
     p "Open Street Find looking for :" + query
     uri = URI.parse("http://nominatim.openstreetmap.org/search/?q=#{query}&format=json&addressdetails=1")
-    result = Net::HTTP.get(uri)
+    result = JSON.parse(Net::HTTP.get(uri))
     p "Open Street Find result from nominatim API :" + result.to_s
     return result
   end
