@@ -33,7 +33,7 @@ module OpenStreetFind
     uri = URI.parse("http://nominatim.openstreetmap.org/search/?q=#{query}&format=json&addressdetails=1&limit=1")
     result = JSON.parse(Net::HTTP.get(uri))
     geocode = {
-      :lat => result[0]['lat']
+      :lat => result[0]['lat'],
       :lon => result[0]['lon']
     }
     return geocode
