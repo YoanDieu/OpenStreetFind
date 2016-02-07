@@ -8,7 +8,7 @@ This Gem use nominatim (https://nominatim.openstreetmap.org/) from OpenStreetMap
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'open_street_find', '~> 0.1.23' , github: "YoanDieu/OpenStreetFind"
+gem 'open_street_find', '~> 0.1.24' , github: "YoanDieu/OpenStreetFind"
 ```
 
 And then execute:
